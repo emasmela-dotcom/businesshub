@@ -3,551 +3,1026 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BusinessHub - AI Website Builder</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>BusinessHub - AI-Powered Website Solutions | Get Your Quote Today</title>
+    <meta name="description" content="Transform your business with AI-powered websites. Get your custom quote in 24 hours. Trusted by 500+ businesses. Limited spots available this month.">
+    <meta name="keywords" content="AI website development, custom websites, business websites, AI-powered solutions, web development, professional website design, mobile responsive websites, SEO optimized websites, business website builder, AI web design, custom web development, small business websites, startup websites, e-commerce websites, website design services, web development company, AI website builder, professional web design, business website creation, custom website development">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="BusinessHub - AI-Powered Website Solutions | Get Your Quote Today">
+    <meta property="og:description" content="Transform your business with AI-powered websites. Get your custom quote in 24 hours. Trusted by 500+ businesses. Limited spots available this month.">
+    <meta property="og:url" content="https://businesshub-rh215hbkq-erics-projects-b395e20f.vercel.app">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://businesshub-rh215hbkq-erics-projects-b395e20f.vercel.app/og-image.jpg">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="BusinessHub - AI-Powered Website Solutions">
+    <meta name="twitter:description" content="Transform your business with AI-powered websites. Get your custom quote in 24 hours. Trusted by 500+ businesses.">
+    <meta name="twitter:image" content="https://businesshub-rh215hbkq-erics-projects-b395e20f.vercel.app/og-image.jpg">
+    
+    <!-- Additional SEO Meta Tags -->
+    <meta name="author" content="BusinessHub">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="revisit-after" content="7 days">
+    <meta name="distribution" content="global">
+    <meta name="rating" content="general">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://businesshub-rh215hbkq-erics-projects-b395e20f.vercel.app">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "BusinessHub",
+        "description": "AI-Powered Website Solutions for businesses",
+        "url": "https://businesshub-rh215hbkq-erics-projects-b395e20f.vercel.app",
+        "logo": "https://businesshub-rh215hbkq-erics-projects-b395e20f.vercel.app/logo.png",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-555-123-4567",
+            "contactType": "customer service",
+            "email": "partners.clearhub@gmail.com"
+        },
+        "address": {
+            "@type": "PostalAddress",
+            "addressCountry": "US"
+        },
+        "sameAs": [
+            "https://linkedin.com/company/businesshub",
+            "https://twitter.com/businesshub"
+        ]
+    }
+    </script>
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-49LY0WE2NY"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-49LY0WE2NY');
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #0a0a0a;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+        
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #00d4ff;
+        }
+        
+        .cta-button {
+            background: #00d4ff;
+            color: #0a0a0a;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: background 0.3s;
+        }
+        
+        .cta-button:hover {
+            background: #00b8d9;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 120px 0 80px;
+            text-align: center;
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .hero .subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .urgency-banner {
+            background: #1a1a1a;
+            color: #e0e0e0;
+            padding: 15px;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+            font-weight: 600;
+            border: 1px solid #333;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .btn-primary {
+            background: #00d4ff;
+            color: #0a0a0a;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 212, 255, 0.3);
+        }
+        
+        .btn-primary:hover {
+            background: #00b8d9;
+            box-shadow: 0 4px 12px rgba(0, 212, 255, 0.4);
+        }
+        
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            border: 2px solid white;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #00d4ff;
+        }
+        
+        /* Social Proof */
+        .social-proof {
+            background: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .proof-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        .stat {
+            padding: 1rem;
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00d4ff;
+            display: block;
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Features */
+        .features {
+            padding: 80px 0;
+            background: #f8f9fa;
+        }
+        
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .feature-card h3 {
+            color: #00d4ff;
+            margin-bottom: 1rem;
+        }
+
+        /* Samples Showcase */
+        .samples-showcase {
+            padding: 80px 0;
+            background: #0a0a0a;
+            color: white;
+        }
+        
+        .samples-showcase h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            opacity: 0.9;
+        }
+        
+        .samples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+        
+        .sample-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .sample-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+        
+        .sample-preview {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .sample-image {
+            width: 100%;
+            height: 100%;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .sample-placeholder {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-align: center;
+        }
+        
+        .sample-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .sample-card:hover .sample-overlay {
+            opacity: 1;
+        }
+        
+        .demo-button {
+            background: white;
+            color: #00d4ff;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .demo-button:hover {
+            background: #f8f9fa;
+            transform: scale(1.05);
+        }
+        
+        .sample-info {
+            padding: 2rem;
+        }
+        
+        .sample-info h3 {
+            color: #333;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .sample-info p {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+        
+        .sample-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        
+        .feature-tag {
+            background: #f0f0f0;
+            color: #00d4ff;
+            padding: 4px 12px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .samples-cta {
+            text-align: center;
+            background: rgba(255,255,255,0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .samples-cta h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+        
+        .samples-cta p {
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        /* Testimonials */
+        .testimonials {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .testimonials h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .testimonial {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: #555;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+            color: #00d4ff;
+        }
+        
+        /* Pricing */
+        .pricing {
+            padding: 80px 0;
+            background: #0a0a0a;
+            color: white;
+        }
+        
+        .pricing h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        
+        .pricing-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .pricing-card.featured {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid #00d4ff;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+        
+        .price-range {
+            font-size: 1.2rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+        }
+        
+        /* Contact Form */
+        .contact {
+            padding: 80px 0;
+            background: white;
+        }
+        
+        .contact h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+        
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+        
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+        
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            background: #00d4ff;
+            color: white;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 107, 107, 0.4);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <div class="nav-logo">
-                <h2>BusinessHub</h2>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
+    <!-- Header -->
+    <header class="header">
+        <nav class="nav container">
+            <div class="logo">BusinessHub</div>
+            <ul class="nav-links">
                 <li><a href="#features">Features</a></li>
                 <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#testimonials">Reviews</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="mailto:partners.clearhub@gmail.com?subject=BusinessHub Getting Started" class="btn btn-primary">Contact Us</a></li>
             </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-        </div>
-    </nav>
+            <a href="#contact" class="cta-button">Get Free Quote</a>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <h1>Transform Your Business with AI Websites</h1>
-            <p>From $0 to $2M+ revenue. Join 300+ businesses scaling with our AI website solutions</p>
-            <div class="hero-quote">
-                <h2>"Have an idea? Let us build it and make it your reality!"</h2>
+    <section class="hero">
+        <div class="container">
+            <div class="urgency-banner">
+                LIMITED SPOTS AVAILABLE THIS MONTH - Only 3 Custom Websites Left!
             </div>
+            <h1>AI-Powered Website Solutions</h1>
+            <p class="subtitle">Transform your vision into reality with intelligent website development that adapts to your business needs</p>
             <div class="hero-buttons">
-                <a href="mailto:partners.clearhub@gmail.com?subject=Free Website Audit Request" class="btn btn-primary">Schedule Free Consultation</a>
-                <a href="mailto:partners.clearhub@gmail.com?subject=Free Website Quote Request" class="btn btn-secondary">Get Free Quote</a>
-                <a href="mailto:partners.clearhub@gmail.com?subject=Project Discussion Request" class="btn btn-outline">Discuss Your Project</a>
+                <a href="#contact" class="btn-primary">Build Your Website Now</a>
+                <a href="#contact" class="btn-secondary">Get Your Custom Quote in 24 Hours</a>
+                <a href="#testimonials" class="btn-secondary">See Client Results</a>
             </div>
-            <div class="hero-cta">
-                <a href="#contact-modal" class="btn btn-primary btn-large" onclick="openModal()">Get Started</a>
-            </div>
-            <div class="hero-descriptions">
-                <div class="description-item">
-                    <h4>Schedule Free Consultation</h4>
-                    <p>Get a free audit of your current website</p>
-                    <small>We'll analyze your site and give you improvement recommendations</small>
-                </div>
-                <div class="description-item">
-                    <h4>Get Free Quote</h4>
-                    <p>Get pricing for your new website</p>
-                    <small>We'll give you a detailed quote for your project</small>
-                </div>
-                <div class="description-item">
-                    <h4>Discuss Your Project</h4>
-                    <p>Talk about your website needs</p>
-                    <small>We'll discuss your goals and how we can help</small>
-                </div>
-            </div>
-            <div class="hero-stats">
+        </div>
+    </section>
+
+    <!-- Social Proof -->
+    <section class="social-proof">
+        <div class="container">
+            <h2>Trusted by 500+ Businesses Worldwide</h2>
+            <div class="proof-stats">
                 <div class="stat">
-                    <h3>10,000+</h3>
-                    <p>Websites Built</p>
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Happy Clients</span>
                 </div>
                 <div class="stat">
-                    <h3>100%</h3>
-                    <p>Client Satisfaction</p>
+                    <span class="stat-number">$2M+</span>
+                    <span class="stat-label">Revenue Generated</span>
                 </div>
                 <div class="stat">
-                    <h3>99.9%</h3>
-                    <p>Uptime Guarantee</p>
+                    <span class="stat-number">99.9%</span>
+                    <span class="stat-label">Client Satisfaction</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">24hrs</span>
+                    <span class="stat-label">Quote Delivery</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Testimonials Section -->
-    <section class="testimonials">
+    <!-- Features -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why Choose BusinessHub?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>AI-Powered Design</h3>
+                    <p>Our AI analyzes thousands of high-performing websites in your industry to create designs that convert visitors into customers.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Lightning Fast</h3>
+                    <p>Get your professional website in 2-3 weeks, not months. Our AI streamlines the entire development process.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Results-Driven</h3>
+                    <p>Every website is optimized for conversions, SEO, and user experience from day one.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Secure & Reliable</h3>
+                    <p>Enterprise-grade security with 99.9% uptime guarantee. Your business is always online.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Mobile-First</h3>
+                    <p>Responsive design that looks perfect on all devices. 70% of your customers are on mobile.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"></div>
+                    <h3>Custom Solutions</h3>
+                    <p>Tailored to your specific industry, audience, and business goals. No cookie-cutter templates.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sample Websites Showcase -->
+    <section class="samples-showcase" id="samples">
+        <div class="container">
+            <h2>See Our Work in Action</h2>
+            <p class="section-subtitle">Experience our AI-powered websites with live, interactive demos</p>
+            
+            <div class="samples-grid">
+                <div class="sample-card">
+                    <div class="sample-preview">
+                        <div class="sample-image">
+                            <div class="sample-overlay">
+                                <a href="samples/restaurant/index.html" target="_blank" class="demo-button">View Live Demo</a>
+                            </div>
+                            <div class="sample-placeholder">🍽️ Restaurant Website</div>
+                        </div>
+                    </div>
+                    <div class="sample-info">
+                        <h3>Bella Vista Restaurant</h3>
+                        <p>Complete restaurant website with online reservations, menu display, and contact forms. Features modern design and mobile optimization.</p>
+                        <div class="sample-features">
+                            <span class="feature-tag">Online Reservations</span>
+                            <span class="feature-tag">Menu Display</span>
+                            <span class="feature-tag">Contact Forms</span>
+                            <span class="feature-tag">Mobile Responsive</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="sample-card">
+                    <div class="sample-preview">
+                        <div class="sample-image">
+                            <div class="sample-overlay">
+                                <a href="samples/retail/index.html" target="_blank" class="demo-button">View Live Demo</a>
+                            </div>
+                            <div class="sample-placeholder">🛍️ Retail Store</div>
+                        </div>
+                    </div>
+                    <div class="sample-info">
+                        <h3>Urban Threads Fashion</h3>
+                        <p>Modern retail website with product catalog, shopping cart functionality, and customer contact system. Perfect for fashion and lifestyle brands.</p>
+                        <div class="sample-features">
+                            <span class="feature-tag">Product Catalog</span>
+                            <span class="feature-tag">Shopping Cart</span>
+                            <span class="feature-tag">Customer Support</span>
+                            <span class="feature-tag">Modern Design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="samples-cta">
+                <h3>Want to see more samples?</h3>
+                <p>We have dozens of industry-specific website templates and can create custom solutions for any business type.</p>
+                <a href="#contact" class="btn-primary">Get Your Custom Sample</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
         <div class="container">
             <h2>What Our Clients Say</h2>
             <div class="testimonial-grid">
                 <div class="testimonial">
-                    <div class="testimonial-text">"Our website traffic increased by 340% in just 3 months. The AI-powered SEO optimization was a game-changer for our business."</div>
-                    <div class="testimonial-author">Sarah Chen</div>
-                    <div class="testimonial-company">CEO, TechStart Solutions</div>
+                    <p class="testimonial-text">"BusinessHub transformed our online presence completely. Our sales increased by 300% in just 3 months. The AI-powered design is incredible!"</p>
+                    <p class="testimonial-author">- Sarah Johnson, CEO of TechStart</p>
                 </div>
                 <div class="testimonial">
-                    <div class="testimonial-text">"Professional, fast, and delivered exactly what we needed. Our conversion rate improved by 180% after the website redesign."</div>
-                    <div class="testimonial-author">Jennifer Walsh</div>
-                    <div class="testimonial-company">Marketing Director, GrowthCorp</div>
+                    <p class="testimonial-text">"Best investment we've made. The website was delivered in 2 weeks and has been generating leads non-stop. Highly recommend!"</p>
+                    <p class="testimonial-author">- Mike Chen, Restaurant Owner</p>
                 </div>
                 <div class="testimonial">
-                    <div class="testimonial-text">"The AI website builder saved us months of development time. We went from concept to $500K revenue in 6 months."</div>
-                    <div class="testimonial-author">Michael Rodriguez</div>
-                    <div class="testimonial-company">Founder, DataFlow Analytics</div>
+                    <p class="testimonial-text">"Professional, fast, and results-driven. Our conversion rate went from 2% to 8% after the new website launch."</p>
+                    <p class="testimonial-author">- Lisa Rodriguez, E-commerce Store</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Case Studies Section -->
-    <section class="case-studies">
+    <!-- Pricing -->
+    <section class="pricing" id="pricing">
         <div class="container">
-            <h2>Real Results, Real Impact</h2>
-            <div class="case-grid">
-                <div class="case-study">
-                    <h3>E-Commerce Website Transformation</h3>
-                    <div class="case-metrics">
-                        <div class="metric">
-                            <div class="metric-value">340%</div>
-                            <div class="metric-label">Traffic Increase</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">$2.1M</div>
-                            <div class="metric-label">Revenue Growth</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">180%</div>
-                            <div class="metric-label">Conversion Rate</div>
-                        </div>
-                    </div>
-                    <div class="case-description">
-                        Built a complete AI-powered e-commerce platform with automated inventory management, personalized recommendations, and intelligent customer service chatbot. The client went from $500K to $2.1M annual revenue in 8 months.
-                    </div>
-                </div>
-                <div class="case-study">
-                    <h3>Professional Services Website</h3>
-                    <div class="case-metrics">
-                        <div class="metric">
-                            <div class="metric-value">250%</div>
-                            <div class="metric-label">Lead Generation</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">$800K</div>
-                            <div class="metric-label">New Revenue</div>
-                        </div>
-                        <div class="metric">
-                            <div class="metric-value">95%</div>
-                            <div class="metric-label">Client Satisfaction</div>
-                        </div>
-                    </div>
-                    <div class="case-description">
-                        Created a professional services website with AI-powered lead generation, automated appointment booking, and intelligent client matching. The firm increased their client base by 250% and generated $800K in new revenue.
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Features Section -->
-    <section id="features" class="features">
-        <div class="container">
-            <h2>Powerful AI Features</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <i class="fas fa-brain"></i>
-                    <h3>AI Content Generation</h3>
-                    <p>Automatically generates SEO-optimized content for your industry</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-laptop"></i>
-                    <h3>Responsive Design</h3>
-                    <p>Mobile-first design that looks perfect on all devices</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-chart-bar"></i>
-                    <h3>SEO Optimization</h3>
-                    <p>Built-in SEO tools to rank higher in search results</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-credit-card"></i>
-                    <h3>E-commerce Ready</h3>
-                    <p>Add online store functionality with payment processing</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-chart-pie"></i>
-                    <h3>Analytics Dashboard</h3>
-                    <p>Track visitor behavior and optimize your site performance</p>
-                </div>
-                <div class="feature-card">
-                    <i class="fas fa-tachometer-alt"></i>
-                    <h3>Lightning Fast</h3>
-                    <p>Optimized for speed with global CDN and caching</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <h2>Transparent Pricing</h2>
-            <p class="pricing-intro">Choose the package that fits your needs. All packages include AI-powered features and professional design.</p>
-            
+            <h2>Transparent Pricing That Scales With You</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Starter</h3>
-                        <div class="pricing-price">
-                            <span class="price-amount">$949</span>
-                            <span class="price-period">one-time</span>
-                        </div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li><i class="fas fa-check"></i> 3 Page Website</li>
-                            <li><i class="fas fa-check"></i> AI Content Generation</li>
-                            <li><i class="fas fa-check"></i> Mobile Responsive Design</li>
-                            <li><i class="fas fa-check"></i> Basic SEO Optimization</li>
-                            <li><i class="fas fa-check"></i> Contact Forms</li>
-                            <li><i class="fas fa-check"></i> 30 Days Support</li>
-                        </ul>
-                    </div>
-                    <a href="mailto:partners.clearhub@gmail.com?subject=Starter Package - $949" class="btn btn-primary">Get Started</a>
+                    <h3>Starter Website</h3>
+                    <div class="price">$2,000</div>
+                    <div class="price-range">- $5,000</div>
+                    <p>Perfect for small businesses and startups. Professional design, mobile-responsive, SEO-optimized, and ready to launch in 2-3 weeks.</p>
+                    <a href="#contact" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Get Quote</a>
                 </div>
-                
                 <div class="pricing-card featured">
-                    <div class="pricing-badge">Most Popular</div>
-                    <div class="pricing-header">
-                        <h3>Professional</h3>
-                        <div class="pricing-price">
-                            <span class="price-amount">$1,497</span>
-                            <span class="price-period">one-time</span>
-                        </div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li><i class="fas fa-check"></i> 5-7 Page Website</li>
-                            <li><i class="fas fa-check"></i> AI Content + SEO</li>
-                            <li><i class="fas fa-check"></i> E-commerce Integration</li>
-                            <li><i class="fas fa-check"></i> Analytics Dashboard</li>
-                            <li><i class="fas fa-check"></i> Payment Processing</li>
-                            <li><i class="fas fa-check"></i> 90 Days Support</li>
-                            <li><i class="fas fa-check"></i> Performance Optimization</li>
-                        </ul>
-                    </div>
-                    <a href="mailto:partners.clearhub@gmail.com?subject=Professional Package - $1,497" class="btn btn-primary">Get Started</a>
+                    <h3>Business Platform</h3>
+                    <div class="price">$6,000</div>
+                    <div class="price-range">- $10,000</div>
+                    <p>Advanced features, custom integrations, e-commerce, booking systems, and AI-powered analytics. Launch in 4-6 weeks.</p>
+                    <a href="#contact" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Most Popular</a>
                 </div>
-                
                 <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>Enterprise</h3>
-                        <div class="pricing-price">
-                            <span class="price-amount">Custom</span>
-                            <span class="price-period">quote</span>
-                        </div>
-                    </div>
-                    <div class="pricing-features">
-                        <ul>
-                            <li><i class="fas fa-check"></i> Unlimited Pages</li>
-                            <li><i class="fas fa-check"></i> Custom AI Features</li>
-                            <li><i class="fas fa-check"></i> Multi-language Support</li>
-                            <li><i class="fas fa-check"></i> Advanced Analytics</li>
-                            <li><i class="fas fa-check"></i> API Integration</li>
-                            <li><i class="fas fa-check"></i> Priority Support</li>
-                            <li><i class="fas fa-check"></i> Dedicated Account Manager</li>
-                        </ul>
-                    </div>
-                    <a href="mailto:partners.clearhub@gmail.com?subject=Enterprise Package - Custom Quote" class="btn btn-primary">Contact Us</a>
+                    <h3>Enterprise Solution</h3>
+                    <div class="price">$11,000</div>
+                    <div class="price-range">- $15,000</div>
+                    <p>Full-scale web applications with custom AI tools, dashboards, automation, and ongoing support. Launch in 6-12 weeks.</p>
+                    <a href="#contact" class="btn-primary" style="margin-top: 1rem; display: inline-block;">Get Quote</a>
                 </div>
-            </div>
-            
-            <div class="pricing-note">
-                <p><strong>All packages include:</strong> Professional design, mobile optimization, hosting setup, SSL certificate, and basic training.</p>
-                <p><strong>Need something custom?</strong> <a href="mailto:partners.clearhub@gmail.com?subject=Custom Website Quote Request" style="color: #00d4ff;">Contact us for a personalized quote</a></p>
             </div>
         </div>
     </section>
 
-    <!-- Market Pricing Section -->
-    <section class="market-pricing">
+    <!-- Contact Form -->
+    <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title">2025 AI Website Development Market Pricing</h2>
-            <p class="section-subtitle">What do AI websites actually cost in the market today?</p>
-            
-            <div class="pricing-comparison-grid">
-                <div class="market-pricing-card">
-                    <h3>AI Website Development</h3>
-                    <div class="market-prices">
-                        <div class="price-item">
-                            <span class="service">Basic AI Website (3-5 pages)</span>
-                            <span class="price">$3,000 - $8,000</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="service">E-commerce AI Site</span>
-                            <span class="price">$8,000 - $25,000</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="service">AI-Powered Business Platform</span>
-                            <span class="price">$15,000 - $50,000</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="service">Enterprise AI Website</span>
-                            <span class="price">$25,000 - $100,000+</span>
-                        </div>
-                    </div>
+            <h2>Get Your Custom Quote in 24 Hours</h2>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name *</label>
+                    <input type="text" id="name" name="name" required>
                 </div>
-                
-                <div class="market-pricing-card">
-                    <h3>Website Add-ons & Services</h3>
-                    <div class="market-prices">
-                        <div class="price-item">
-                            <span class="service">SEO Optimization</span>
-                            <span class="price">$500 - $2,000</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="service">E-commerce Integration</span>
-                            <span class="price">$1,000 - $5,000</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="service">Content Management System</span>
-                            <span class="price">$800 - $3,000</span>
-                        </div>
-                        <div class="price-item">
-                            <span class="service">Website Maintenance</span>
-                            <span class="price">$200 - $500/month</span>
-                        </div>
-                    </div>
+                <div class="form-group">
+                    <label for="email">Email Address *</label>
+                    <input type="email" id="email" name="email" required>
                 </div>
-            </div>
-            
-            <div class="pricing-note">
-                <h4>Our Competitive Advantage</h4>
-                <p>While market rates are $3,000-$100,000+, we offer professional AI website solutions at significantly reduced rates because we focus on efficiency and client success rather than inflated pricing.</p>
-            </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number *</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <input type="text" id="company" name="company">
+                </div>
+                <div class="form-group">
+                    <label for="budget">Budget Range *</label>
+                    <select id="budget" name="budget" required>
+                        <option value="">Select Budget Range</option>
+                        <option value="500-2000">$500 - $2,000</option>
+                        <option value="2000-5000">$2,000 - $5,000</option>
+                        <option value="6000-10000">$6,000 - $10,000</option>
+                        <option value="11000-15000">$11,000 - $15,000</option>
+                        <option value="15000+">$15,000+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timeline">Project Timeline *</label>
+                    <select id="timeline" name="timeline" required>
+                        <option value="">Select Timeline</option>
+                        <option value="asap">ASAP (Rush Job)</option>
+                        <option value="2-3weeks">2-3 Weeks</option>
+                        <option value="1-2months">1-2 Months</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="project">Project Description *</label>
+                    <textarea id="project" name="project" placeholder="Tell us about your business, goals, and what you need..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">Get My Free Quote in 24 Hours</button>
+            </form>
         </div>
     </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <h2>Portfolio Gallery</h2>
-            <p class="portfolio-intro">See the websites we've built and the results we've achieved for our clients</p>
-            <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
-                        E-Commerce Platform
-                    </div>
-                    <div class="portfolio-details">
-                        <h4>E-Commerce Transformation</h4>
-                        <p>Complete online store with AI-powered recommendations and automated inventory management</p>
-                        <div class="portfolio-stats">
-                            <div class="stat">
-                                <strong>340%</strong> Traffic Increase
-                            </div>
-                            <div class="stat">
-                                <strong>$2.1M</strong> Revenue Growth
-                            </div>
-                        </div>
-                        <a href="mailto:partners.clearhub@gmail.com?subject=Portfolio Inquiry - E-Commerce Platform" class="portfolio-link">View Details <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
-                        Professional Services
-                    </div>
-                    <div class="portfolio-details">
-                        <h4>Professional Services Website</h4>
-                        <p>AI-powered lead generation with automated appointment booking and client matching</p>
-                        <div class="portfolio-stats">
-                            <div class="stat">
-                                <strong>250%</strong> Lead Increase
-                            </div>
-                            <div class="stat">
-                                <strong>$800K</strong> New Revenue
-                            </div>
-                        </div>
-                        <a href="mailto:partners.clearhub@gmail.com?subject=Portfolio Inquiry - Professional Services" class="portfolio-link">View Details <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
-                        SaaS Platform
-                    </div>
-                    <div class="portfolio-details">
-                        <h4>SaaS Business Platform</h4>
-                        <p>Scalable SaaS application with user management, billing, and analytics dashboard</p>
-                        <div class="portfolio-stats">
-                            <div class="stat">
-                                <strong>10K+</strong> Users
-                            </div>
-                            <div class="stat">
-                                <strong>$200K</strong> MRR
-                            </div>
-                        </div>
-                        <a href="mailto:partners.clearhub@gmail.com?subject=Portfolio Inquiry - SaaS Platform" class="portfolio-link">View Details <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
-                        Restaurant Website
-                    </div>
-                    <div class="portfolio-details">
-                        <h4>Restaurant & Food Service</h4>
-                        <p>Online ordering system with menu management and reservation booking</p>
-                        <div class="portfolio-stats">
-                            <div class="stat">
-                                <strong>180%</strong> Orders Increase
-                            </div>
-                            <div class="stat">
-                                <strong>95%</strong> Satisfaction
-                            </div>
-                        </div>
-                        <a href="mailto:partners.clearhub@gmail.com?subject=Portfolio Inquiry - Restaurant Website" class="portfolio-link">View Details <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 2rem; font-weight: bold;">
-                        Healthcare Portal
-                    </div>
-                    <div class="portfolio-details">
-                        <h4>Healthcare & Medical</h4>
-                        <p>Patient portal with appointment scheduling and secure medical records access</p>
-                        <div class="portfolio-stats">
-                            <div class="stat">
-                                <strong>300%</strong> Patient Engagement
-                            </div>
-                            <div class="stat">
-                                <strong>HIPAA</strong> Compliant
-                            </div>
-                        </div>
-                        <a href="mailto:partners.clearhub@gmail.com?subject=Portfolio Inquiry - Healthcare Portal" class="portfolio-link">View Details <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                
-                <div class="portfolio-item">
-                    <div class="portfolio-image" style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; color: #333; font-size: 2rem; font-weight: bold;">
-                        Real Estate
-                    </div>
-                    <div class="portfolio-details">
-                        <h4>Real Estate Platform</h4>
-                        <p>Property listing website with virtual tours and AI-powered property matching</p>
-                        <div class="portfolio-stats">
-                            <div class="stat">
-                                <strong>220%</strong> Listings Views
-                            </div>
-                            <div class="stat">
-                                <strong>$1.5M</strong> Sales Generated
-                            </div>
-                        </div>
-                        <a href="mailto:partners.clearhub@gmail.com?subject=Portfolio Inquiry - Real Estate Platform" class="portfolio-link">View Details <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>BusinessHub</h3>
-                    <p>AI-powered website building for modern businesses</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Product</h4>
-                    <ul>
-                        <li><a href="#features">Features</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#">Templates</a></li>
-                        <li><a href="#">API</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Documentation</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>partners.clearhub@gmail.com</p>
-                    <p>AI Solutions Hub</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2024 BusinessHub. All rights reserved.</p>
-            </div>
+            <p>&copy; 2024 BusinessHub. All rights reserved. | AI-Powered Website Solutions</p>
+            <p style="margin-top: 10px; font-size: 0.9rem; opacity: 0.8;">Contact: partners.clearhub@gmail.com</p>
         </div>
     </footer>
 
-    <!-- Contact Modal -->
-    <div id="contact-modal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <h2>Get Started Today</h2>
-            <form class="contact-form" action="mailto:partners.clearhub@gmail.com" method="post" enctype="text/plain">
-                <div class="form-group">
-                    <input type="text" name="name" placeholder="Your Name" required>
-                </div>
-                <div class="form-group">
-                    <input type="email" name="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group">
-                    <select name="service" required>
-                        <option value="">Select Service</option>
-                        <option value="Website Development">Website Development</option>
-                        <option value="Website Redesign">Website Redesign</option>
-                        <option value="E-commerce Website">E-commerce Website</option>
-                        <option value="Other">Other</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <select name="budget" required>
-                        <option value="">Project Budget</option>
-                        <option value="Under $1,000">Under $1,000</option>
-                        <option value="$1,000 - $2,000">$1,000 - $2,000</option>
-                        <option value="$2,000 - $5,000">$2,000 - $5,000</option>
-                        <option value="Over $5,000">Over $5,000</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <textarea name="message" placeholder="Tell us about your website project" rows="4"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-            </form>
-        </div>
-    </div>
-
-    <script src="script.js"></script>
     <script>
-        function openModal() {
-            document.getElementById('contact-modal').style.display = 'block';
-        }
-        
-        function closeModal() {
-            document.getElementById('contact-modal').style.display = 'none';
-        }
-        
-        window.onclick = function(event) {
-            const modal = document.getElementById('contact-modal');
-            if (event.target == modal) {
-                modal.style.display = 'none';
+        // Google Analytics Event Tracking
+        function trackEvent(action, category, label, value) {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', action, {
+                    event_category: category,
+                    event_label: label,
+                    value: value
+                });
             }
         }
+
+        // Track form submissions
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            // Track form submission
+            trackEvent('form_submit', 'lead_generation', 'contact_form', 1);
+            
+            // Get form data
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            // Disable submit button
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            // Send email using Web3Forms
+            const emailSent = await sendLeadEmail(data);
+            
+            if (emailSent) {
+                // Show success message
+                alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email!');
+                // Reset form
+                this.reset();
+            } else {
+                alert('There was an error sending your request. Please email us directly at partners.clearhub@gmail.com');
+            }
+            
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+        });
+
+        // Function to send lead email
+        async function sendLeadEmail(data) {
+            // Create email content
+            const emailContent = `
+New BusinessHub Lead:
+
+Name: ${data.name}
+Email: ${data.email}
+Phone: ${data.phone}
+Company: ${data.company || 'Not provided'}
+Budget: ${data.budget}
+Timeline: ${data.timeline}
+Project Description: ${data.project}
+
+Submitted: ${new Date().toLocaleString()}
+            `;
+            
+            try {
+                // Send email using Web3Forms
+                const response = await fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        access_key: '9f6ac12b-93eb-463c-9d70-61d3781e5518',
+                        subject: `New BusinessHub Lead - ${data.name}`,
+                        from_name: 'BusinessHub Platform',
+                        email: 'partners.clearhub@gmail.com',
+                        message: emailBody,
+                        replyto: data.email
+                    })
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    console.log('✅ Email sent successfully to partners.clearhub@gmail.com');
+                    return true;
+                } else {
+                    console.error('❌ Email failed:', result);
+                    return false;
+                }
+            } catch (error) {
+                console.error('❌ Error sending email:', error);
+                return false;
+            }
+        }
+
+        // Track button clicks
+        document.querySelectorAll('.btn-primary, .cta-button').forEach(button => {
+            button.addEventListener('click', function() {
+                trackEvent('click', 'cta', this.textContent.trim(), 1);
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add urgency timer
+        function updateUrgencyTimer() {
+            const now = new Date();
+            const endOfMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0);
+            const daysLeft = Math.ceil((endOfMonth - now) / (1000 * 60 * 60 * 24));
+            
+            const urgencyBanner = document.querySelector('.urgency-banner');
+            if (urgencyBanner && daysLeft <= 7) {
+                urgencyBanner.innerHTML = `ONLY ${daysLeft} DAYS LEFT THIS MONTH - Limited Spots Available!`;
+            }
+        }
+
+        // Update timer on page load
+        updateUrgencyTimer();
+        
+        // Update timer every hour
+        setInterval(updateUrgencyTimer, 3600000);
     </script>
 </body>
 </html>
