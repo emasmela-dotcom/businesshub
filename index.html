@@ -954,19 +954,16 @@ Submitted: ${new Date().toLocaleString()}
             
             try {
                 // Send email using Web3Forms
+                const formData = new FormData();
+                formData.append('access_key', '9f6ac12b-93eb-463c-9d70-61d3781e5518');
+                formData.append('subject', `New BusinessHub Lead - ${data.name}`);
+                formData.append('from_name', 'BusinessHub Platform');
+                formData.append('message', emailContent);
+                formData.append('replyto', data.email);
+                
                 const response = await fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Accept': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        access_key: '9f6ac12b-93eb-463c-9d70-61d3781e5518',
-                        subject: `New BusinessHub Lead - ${data.name}`,
-                        from_name: 'BusinessHub Platform',
-                        message: emailContent,
-                        replyto: data.email
-                    })
+                    body: formData
                 });
                 
                 const result = await response.json();
