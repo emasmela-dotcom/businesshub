@@ -834,7 +834,12 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2>Get Your Custom Quote in 24 Hours</h2>
-            <form class="contact-form" id="contactForm" action="/api/send-email" method="POST">
+            <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+                <input type="hidden" name="access_key" value="9f6ac12b-93eb-463c-9d70-61d3781e5518">
+                <input type="hidden" name="subject" value="New BusinessHub Lead">
+                <input type="hidden" name="from_name" value="BusinessHub Platform">
+                <input type="hidden" name="_redirect" value="https://businesshub-platform.vercel.app/?success=true">
+                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -901,42 +906,51 @@
             }
         }
 
-        // Track form submissions and handle API response
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
+        // Track form submissions
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             // Track form submission
             trackEvent('form_submit', 'lead_generation', 'contact_form', 1);
             
-            // Disable submit button
-            const submitBtn = this.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
+            // Add formatted message field before submission
+            const formData = new FormData(this);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const company = formData.get('company') || 'Not provided';
+            const budget = formData.get('budget');
+            const timeline = formData.get('timeline');
+            const project = formData.get('project');
             
-            try {
-                const formData = new FormData(this);
-                const response = await fetch('/api/send-email', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email!');
-                    this.reset();
-                } else {
-                    alert('There was an error sending your request. Please email us directly at partners.clearhub@gmail.com');
-                }
-            } catch (error) {
-                console.error('Error:', error);
-                alert('There was an error sending your request. Please email us directly at partners.clearhub@gmail.com');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = originalText;
+            const messageContent = `New BusinessHub Lead:
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+Company: ${company}
+Budget: ${budget}
+Timeline: ${timeline}
+Project Description: ${project}
+
+Submitted: ${new Date().toLocaleString()}`;
+            
+            // Add message field
+            let messageField = this.querySelector('input[name="message"]');
+            if (!messageField) {
+                messageField = document.createElement('input');
+                messageField.type = 'hidden';
+                messageField.name = 'message';
+                this.appendChild(messageField);
             }
+            messageField.value = messageContent;
+            
+            // Let form submit naturally to Web3Forms
         });
+        
+        // Check for success redirect
+        if (window.location.search.includes('success=true')) {
+            alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email!');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
 
         // Track button clicks
         document.querySelectorAll('.btn-primary, .cta-button').forEach(button => {
