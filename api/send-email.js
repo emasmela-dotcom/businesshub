@@ -31,9 +31,36 @@ Submitted: ${new Date().toLocaleString()}
   console.log('Timestamp:', new Date().toISOString());
   console.log('===================================');
 
+  try {
+    // Send email using a simple HTTP email service
+    // Using a webhook that sends emails (you can set up Zapier/Make.com webhook)
+    // For now, log everything - you can check Vercel logs
+    
+    // Try sending via a simple email API
+    const emailResponse = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.RESEND_API_KEY || ''}`,
+      },
+      body: JSON.stringify({
+        from: 'BusinessHub <onboarding@resend.dev>',
+        to: 'partners.clearhub@gmail.com',
+        reply_to: email,
+        subject: `New BusinessHub Lead - ${name}`,
+        text: emailContent,
+      }),
+    });
+
+    if (emailResponse.ok) {
+      return res.status(200).json({ success: true });
+    }
+  } catch (error) {
+    console.error('Email send error:', error);
+  }
+
   // Always return success - submissions are logged in Vercel
-  // Check Vercel function logs to see all submissions
-  // You can set up email forwarding from Vercel logs or use a monitoring service
+  // Check Vercel function logs: vercel logs [deployment-url]
   return res.status(200).json({ success: true, message: 'Request received successfully' });
 }
 
