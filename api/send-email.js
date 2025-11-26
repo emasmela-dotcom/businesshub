@@ -61,6 +61,11 @@ Submitted: ${new Date().toLocaleString()}
 
   // Always return success - submissions are logged in Vercel
   // Check Vercel function logs: vercel logs [deployment-url]
-  return res.status(200).json({ success: true, message: 'Request received successfully' });
+  // Email will be sent if RESEND_API_KEY is configured, otherwise check logs
+  return res.status(200).json({ 
+    success: true, 
+    message: 'Request received successfully',
+    logged: true
+  });
 }
 
