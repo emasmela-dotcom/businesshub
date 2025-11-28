@@ -57,6 +57,13 @@
     }
     </script>
     
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("YOUR_PUBLIC_KEY"); // This will be set up
+        })();
+    </script>
     <!-- Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-49LY0WE2NY"></script>
     <script>
@@ -834,7 +841,7 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2>Get Your Custom Quote in 24 Hours</h2>
-            <form class="contact-form" id="contactForm">
+            <form class="contact-form" id="contactForm" action="/api/send-email" method="POST">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -901,43 +908,64 @@
             }
         }
 
-        // Track form submissions and send via serverless function
+        // Check for success message from Formspree redirect
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('success') === 'true') {
+                alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email!');
+            // Clean up URL
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        // Track form submission (but don't prevent default - let form submit naturally)
+        // Check for success redirect
+        if (window.location.search.includes('submitted=success')) {
+            alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email at partners.clearhub@gmail.com!');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        // Check for success redirect from Formspree
+        if (window.location.search.includes('success=true')) {
+            alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email at partners.clearhub@gmail.com!');
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+
+        // Handle form submission with EmailJS
         document.getElementById('contactForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Track form submission
-            trackEvent('form_submit', 'lead_generation', 'contact_form', 1);
-            
-            // Disable submit button
+            const formData = new FormData(this);
             const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
-            submitBtn.disabled = true;
             submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            trackEvent('form_submit', 'lead_generation', 'contact_form', 1);
             
             try {
-                const formData = new FormData(this);
                 const response = await fetch('/api/send-email', {
                     method: 'POST',
                     body: formData
                 });
                 
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    const errorText = await response.text();
+                    throw new Error(`HTTP ${response.status}: ${errorText.substring(0, 200)}`);
                 }
                 
                 const result = await response.json();
                 
-                // Always show success - submissions are logged
-                alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email!');
-                this.reset();
+                if (result.success) {
+                    alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email!');
+                    this.reset();
+                } else {
+                    throw new Error(result.message || 'Submission failed');
+                }
             } catch (error) {
-                console.error('Error:', error);
-                // Still show success - submission is logged in server
-                alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email!');
-                this.reset();
+                console.error('Form error:', error);
+                alert('Error: ' + error.message + '\n\nPlease email us directly at partners.clearhub@gmail.com');
             } finally {
-                submitBtn.disabled = false;
                 submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
             }
         });
 
