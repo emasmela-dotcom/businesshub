@@ -1,30 +1,45 @@
 module.exports = async function handler(req, res) {
-  console.log('=== API FUNCTION CALLED ===');
-  console.log('Method:', req.method);
-  console.log('Headers:', req.headers);
-  console.log('Body:', req.body);
-  
-  if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
-  }
+  // Set CORS headers first
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
 
-  // Parse form data - handle both JSON and FormData
-  let name, email, phone, company, budget, timeline, project;
-  
-  if (req.headers['content-type']?.includes('application/json')) {
-    ({ name, email, phone, company, budget, timeline, project } = req.body);
-  } else {
-    // Handle FormData - Vercel automatically parses it
-    name = req.body.name;
-    email = req.body.email;
-    phone = req.body.phone;
-    company = req.body.company;
-    budget = req.body.budget;
-    timeline = req.body.timeline;
-    project = req.body.project;
-  }
-  
-  console.log('Received form data:', { name, email, phone, company, budget, timeline, project });
+  try {
+    console.log('=== API FUNCTION CALLED ===');
+    console.log('Method:', req.method);
+    console.log('Headers:', req.headers);
+    console.log('Body:', req.body);
+    
+    if (req.method !== 'POST') {
+      return res.status(405).json({ error: 'Method not allowed' });
+    }
+
+    // Parse form data - handle both JSON and FormData
+    let name, email, phone, company, budget, timeline, project;
+    
+    if (req.headers['content-type']?.includes('application/json')) {
+      ({ name, email, phone, company, budget, timeline, project } = req.body);
+    } else {
+      // Handle FormData - Vercel automatically parses it
+      name = req.body?.name;
+      email = req.body?.email;
+      phone = req.body?.phone;
+      company = req.body?.company;
+      budget = req.body?.budget;
+      timeline = req.body?.timeline;
+      project = req.body?.project;
+    }
+    
+    // Validate required fields
+    if (!name || !email || !budget || !timeline || !project) {
+      console.error('Missing required fields:', { name, email, budget, timeline, project });
+      return res.status(400).json({ 
+        success: false, 
+        message: 'Missing required fields: name, email, budget, timeline, and project are required.' 
+      });
+    }
+    
+    console.log('Received form data:', { name, email, phone, company, budget, timeline, project });
 
   const emailContent = `New BusinessHub Lead:
 
@@ -235,31 +250,35 @@ Submitted: ${new Date().toLocaleString()}`;
     }
   }
 
-  // Set CORS headers
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+    // Log final status
+    console.log('=== FINAL EMAIL STATUS ===');
+    console.log('emailSent:', emailSent);
+    console.log('========================');
 
-  // Log final status
-  console.log('=== FINAL EMAIL STATUS ===');
-  console.log('emailSent:', emailSent);
-  console.log('========================');
+    if (!emailSent) {
+      console.error('❌ FAILED TO SEND EMAIL - All services failed');
+      return res.status(500).json({ 
+        success: false, 
+        message: 'Failed to send email. Please check Vercel logs and email partners.clearhub@gmail.com directly.',
+        emailSent: false
+      });
+    }
 
-  if (!emailSent) {
-    console.error('❌ FAILED TO SEND EMAIL - All services failed');
+    // Only return success if we're 100% sure email was sent
+    console.log('✅ Returning success - email was confirmed sent');
+    return res.status(200).json({ 
+      success: true, 
+      message: 'Email sent successfully to partners.clearhub@gmail.com',
+      emailSent: true
+    });
+  } catch (error) {
+    console.error('❌ FUNCTION ERROR:', error);
+    console.error('Error stack:', error.stack);
     return res.status(500).json({ 
       success: false, 
-      message: 'Failed to send email. Please check Vercel logs and email partners.clearhub@gmail.com directly.',
-      emailSent: false
+      message: `Server error: ${error.message}. Please email partners.clearhub@gmail.com directly.`,
+      error: error.message
     });
   }
-
-  // Only return success if we're 100% sure email was sent
-  console.log('✅ Returning success - email was confirmed sent');
-  return res.status(200).json({ 
-    success: true, 
-    message: 'Email sent successfully to partners.clearhub@gmail.com',
-    emailSent: true
-  });
 }
 
