@@ -14,24 +14,35 @@ module.exports = async function handler(req, res) {
       return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    // Parse form data
-    const name = String(req.body?.name || '');
-    const email = String(req.body?.email || '');
-    const phone = String(req.body?.phone || '');
-    const company = String(req.body?.company || 'Not provided');
-    const budget = String(req.body?.budget || '');
-    const timeline = String(req.body?.timeline || '');
-    const project = String(req.body?.project || '');
+    // Parse form data - Vercel auto-parses FormData
+    console.log('Raw body:', req.body);
+    console.log('Body type:', typeof req.body);
+    console.log('Body keys:', Object.keys(req.body || {}));
+    
+    const name = String(req.body?.name || '').trim();
+    const email = String(req.body?.email || '').trim();
+    const phone = String(req.body?.phone || '').trim();
+    const company = String(req.body?.company || 'Not provided').trim();
+    const budget = String(req.body?.budget || '').trim();
+    const timeline = String(req.body?.timeline || '').trim();
+    const project = String(req.body?.project || '').trim();
+    
+    console.log('Parsed form data:', { name, email, phone, company, budget, timeline, project });
     
     // Validate required fields
     if (!name || !email || !budget || !timeline || !project) {
+      console.error('Validation failed - missing fields:', {
+        hasName: !!name,
+        hasEmail: !!email,
+        hasBudget: !!budget,
+        hasTimeline: !!timeline,
+        hasProject: !!project
+      });
       return res.status(400).json({ 
         success: false, 
-        message: 'Missing required fields' 
+        message: `Missing required fields. Please fill in: ${!name ? 'Name, ' : ''}${!email ? 'Email, ' : ''}${!budget ? 'Budget, ' : ''}${!timeline ? 'Timeline, ' : ''}${!project ? 'Project Description' : ''}`.replace(/,\s*$/, '')
       });
     }
-    
-    console.log('Received form data:', { name, email, phone, company, budget, timeline, project });
 
     const emailContent = `New BusinessHub Lead:
 
