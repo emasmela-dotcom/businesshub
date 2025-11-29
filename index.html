@@ -942,9 +942,18 @@
             trackEvent('form_submit', 'lead_generation', 'contact_form', 1);
             
             try {
+                // Convert FormData to JSON object
+                const formDataObj = {};
+                formData.forEach((value, key) => {
+                    formDataObj[key] = value;
+                });
+                
                 const response = await fetch('/api/send-email', {
                     method: 'POST',
-                    body: formData
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(formDataObj)
                 });
                 
                 const result = await response.json();

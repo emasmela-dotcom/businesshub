@@ -16,19 +16,26 @@ module.exports = async function handler(req, res) {
       return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    // Vercel automatically parses FormData into req.body
-    // But sometimes it needs to be accessed differently
-    let body = req.body || {};
+    // Parse JSON body (we're sending JSON from the client now)
+    let body = {};
     
-    // Log everything for debugging
+    if (req.headers['content-type']?.includes('application/json')) {
+      body = req.body || {};
+    } else {
+      // Fallback: try to parse as JSON anyway
+      try {
+        body = typeof req.body === 'string' ? JSON.parse(req.body) : (req.body || {});
+      } catch (e) {
+        body = req.body || {};
+      }
+    }
+    
     console.log('=== REQUEST DEBUG ===');
     console.log('req.body:', body);
-    console.log('req.body type:', typeof body);
-    console.log('req.body keys:', Object.keys(body));
-    console.log('Content-Type:', req.headers['content-type']);
+    console.log('Body keys:', Object.keys(body));
     console.log('====================');
     
-    // Extract form fields - Vercel should auto-parse FormData
+    // Extract form fields
     const name = String(body.name || '').trim();
     const email = String(body.email || '').trim();
     const phone = String(body.phone || '').trim();
