@@ -9,23 +9,38 @@ module.exports = async function handler(req, res) {
 
   try {
     console.log('=== API FUNCTION CALLED ===');
+    console.log('Method:', req.method);
+    console.log('Content-Type:', req.headers['content-type']);
     
     if (req.method !== 'POST') {
       return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    // Parse form data - Vercel auto-parses FormData
-    console.log('Raw body:', req.body);
-    console.log('Body type:', typeof req.body);
-    console.log('Body keys:', Object.keys(req.body || {}));
+    // Vercel automatically parses FormData, but let's be explicit
+    let body = req.body;
     
-    const name = String(req.body?.name || '').trim();
-    const email = String(req.body?.email || '').trim();
-    const phone = String(req.body?.phone || '').trim();
-    const company = String(req.body?.company || 'Not provided').trim();
-    const budget = String(req.body?.budget || '').trim();
-    const timeline = String(req.body?.timeline || '').trim();
-    const project = String(req.body?.project || '').trim();
+    // If body is a string (shouldn't happen, but just in case)
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        // If not JSON, try parsing as URL-encoded
+        body = querystring.parse(body);
+      }
+    }
+    
+    console.log('Raw body:', body);
+    console.log('Body type:', typeof body);
+    console.log('Body keys:', Object.keys(body || {}));
+    
+    // Extract form fields - handle both object and parsed form data
+    const name = String(body?.name || '').trim();
+    const email = String(body?.email || '').trim();
+    const phone = String(body?.phone || '').trim();
+    const company = String(body?.company || 'Not provided').trim();
+    const budget = String(body?.budget || '').trim();
+    const timeline = String(body?.timeline || '').trim();
+    const project = String(body?.project || '').trim();
     
     console.log('Parsed form data:', { name, email, phone, company, budget, timeline, project });
     
