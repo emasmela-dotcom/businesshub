@@ -52,6 +52,15 @@ module.exports = async function handler(req, res) {
       });
     }
     
+    // Ensure all variables are strings to prevent template errors
+    name = String(name || '');
+    email = String(email || '');
+    phone = String(phone || '');
+    company = String(company || 'Not provided');
+    budget = String(budget || '');
+    timeline = String(timeline || '');
+    project = String(project || '');
+    
     console.log('Received form data:', { name, email, phone, company, budget, timeline, project });
 
   const emailContent = `New BusinessHub Lead:
