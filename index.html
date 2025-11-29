@@ -841,12 +841,7 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2>Get Your Custom Quote in 24 Hours</h2>
-            <form class="contact-form" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
-                <input type="hidden" name="access_key" value="9f6ac12b-93eb-463c-9d70-61d3781e5518">
-                <input type="hidden" name="subject" value="New BusinessHub Lead">
-                <input type="hidden" name="from_name" value="BusinessHub Platform">
-                <input type="hidden" name="to" value="partners.clearhub@gmail.com">
-                <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <form class="contact-form" id="contactForm" action="/api/send-email" method="POST">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required>
@@ -934,8 +929,11 @@
             window.history.replaceState({}, document.title, window.location.pathname);
         }
 
-        // Handle form submission with EmailJS
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        // Handle form submission
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const formData = new FormData(this);
             const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
@@ -943,7 +941,27 @@
             
             trackEvent('form_submit', 'lead_generation', 'contact_form', 1);
             
-            // Let form submit naturally to Formspree - no preventDefault
+            try {
+                const response = await fetch('/api/send-email', {
+                    method: 'POST',
+                    body: formData
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email!');
+                    this.reset();
+                } else {
+                    throw new Error(result.message || 'Submission failed');
+                }
+            } catch (error) {
+                console.error('Form error:', error);
+                alert('Error: ' + error.message + '\n\nPlease email us directly at partners.clearhub@gmail.com');
+            } finally {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
         });
 
         // Track button clicks
