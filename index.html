@@ -932,10 +932,7 @@
         }
 
         // Handle form submission with EmailJS
-        document.getElementById('contactForm').addEventListener('submit', async function(e) {
-            e.preventDefault();
-            
-            const formData = new FormData(this);
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
             const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.textContent;
             submitBtn.textContent = 'Sending...';
@@ -943,32 +940,7 @@
             
             trackEvent('form_submit', 'lead_generation', 'contact_form', 1);
             
-            try {
-                const response = await fetch('/api/send-email', {
-                    method: 'POST',
-                    body: formData
-                });
-                
-                if (!response.ok) {
-                    const errorText = await response.text();
-                    throw new Error(`HTTP ${response.status}: ${errorText.substring(0, 200)}`);
-                }
-                
-                const result = await response.json();
-                
-                if (result.success) {
-                    alert('Thank you! We\'ll send your custom quote within 24 hours. Check your email!');
-                    this.reset();
-                } else {
-                    throw new Error(result.message || 'Submission failed');
-                }
-            } catch (error) {
-                console.error('Form error:', error);
-                alert('Error: ' + error.message + '\n\nPlease email us directly at partners.clearhub@gmail.com');
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            }
+            // Let form submit naturally to Formspree - no preventDefault
         });
 
         // Track button clicks
