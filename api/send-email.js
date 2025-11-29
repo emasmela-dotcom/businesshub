@@ -1,4 +1,8 @@
 module.exports = async function handler(req, res) {
+  // Log IMMEDIATELY - before anything else
+  console.log('=== FUNCTION STARTED ===');
+  console.log('Timestamp:', new Date().toISOString());
+  
   // Set CORS headers first
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST');
@@ -7,8 +11,17 @@ module.exports = async function handler(req, res) {
   try {
     console.log('=== API FUNCTION CALLED ===');
     console.log('Method:', req.method);
-    console.log('Headers:', req.headers);
-    console.log('Body:', req.body);
+    try {
+      console.log('Headers:', JSON.stringify(req.headers || {}));
+    } catch (e) {
+      console.log('Headers: [could not stringify]');
+    }
+    console.log('Body type:', typeof req.body);
+    try {
+      console.log('Body:', req.body ? JSON.stringify(req.body) : 'null/undefined');
+    } catch (e) {
+      console.log('Body: [could not stringify]');
+    }
     
     if (req.method !== 'POST') {
       return res.status(405).json({ error: 'Method not allowed' });
