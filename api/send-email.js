@@ -84,55 +84,6 @@ Submitted: ${new Date().toLocaleString()}`;
   // TRY 1: Formspree (simplest, no API key needed)
   if (!emailSent) {
     try {
-      const web3formsData = {
-        access_key: '9f6ac12b-93eb-463c-9d70-61d3781e5518',
-        subject: `New BusinessHub Lead - ${name}`,
-        from_name: 'BusinessHub Platform',
-        email: email,
-        to: 'partners.clearhub@gmail.com',
-        message: emailContent,
-        name: name,
-        replyto: email
-      };
-      
-      const params = new URLSearchParams();
-      Object.keys(web3formsData).forEach(key => {
-        params.append(key, web3formsData[key]);
-      });
-      
-      const response = await fetch('https://api.web3forms.com/submit', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-        body: params.toString(),
-      });
-
-      const result = await response.json();
-      console.log('Web3Forms full response:', JSON.stringify(result, null, 2));
-      
-      if (result.success === true) {
-        emailSent = true;
-        console.log('✅ Email sent successfully via Web3Forms');
-      } else {
-        const errorMsg = result.message || JSON.stringify(result);
-        console.error('❌ Web3Forms failed:', errorMsg);
-        
-        // If activation required, return error immediately
-        if (result.message && (result.message.toLowerCase().includes('activation') || result.message.toLowerCase().includes('not activated'))) {
-          return res.status(400).json({ 
-            success: false, 
-            message: 'Web3Forms key needs activation. Visit https://web3forms.com and activate your key.',
-            error: errorMsg
-          });
-        }
-      }
-    } catch (error) {
-      console.error('❌ Web3Forms exception:', error.message);
-    }
-  }
-
-    try {
       console.log('🔄 Trying Formspree...');
       const formspreeData = new URLSearchParams();
       formspreeData.append('name', name);
