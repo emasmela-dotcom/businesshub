@@ -841,7 +841,9 @@
     <section class="contact" id="contact">
         <div class="container">
             <h2>Get Your Custom Quote in 24 Hours</h2>
-            <form class="contact-form" id="contactForm" action="/api/send-email" method="POST">
+            <form class="contact-form" id="contactForm" action="https://formspree.io/f/xrbvnnjy" method="POST">
+                <input type="hidden" name="_to" value="partners.clearhub@gmail.com">
+                <input type="hidden" name="_subject" value="New BusinessHub Lead">
                 <div class="form-group">
                     <label for="name">Full Name *</label>
                     <input type="text" id="name" name="name" required>
