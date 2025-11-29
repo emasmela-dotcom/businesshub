@@ -16,31 +16,28 @@ module.exports = async function handler(req, res) {
       return res.status(405).json({ error: 'Method not allowed' });
     }
 
-    // Vercel automatically parses FormData, but let's be explicit
-    let body = req.body;
+    // Vercel automatically parses FormData into req.body
+    // But sometimes it needs to be accessed differently
+    let body = req.body || {};
     
-    // If body is a string (shouldn't happen, but just in case)
-    if (typeof body === 'string') {
-      try {
-        body = JSON.parse(body);
-      } catch (e) {
-        // If not JSON, try parsing as URL-encoded
-        body = querystring.parse(body);
-      }
-    }
+    // Log everything for debugging
+    console.log('=== REQUEST DEBUG ===');
+    console.log('req.body:', body);
+    console.log('req.body type:', typeof body);
+    console.log('req.body keys:', Object.keys(body));
+    console.log('Content-Type:', req.headers['content-type']);
+    console.log('====================');
     
-    console.log('Raw body:', body);
-    console.log('Body type:', typeof body);
-    console.log('Body keys:', Object.keys(body || {}));
+    // Extract form fields - Vercel should auto-parse FormData
+    const name = String(body.name || '').trim();
+    const email = String(body.email || '').trim();
+    const phone = String(body.phone || '').trim();
+    const company = String(body.company || 'Not provided').trim();
+    const budget = String(body.budget || '').trim();
+    const timeline = String(body.timeline || '').trim();
+    const project = String(body.project || '').trim();
     
-    // Extract form fields - handle both object and parsed form data
-    const name = String(body?.name || '').trim();
-    const email = String(body?.email || '').trim();
-    const phone = String(body?.phone || '').trim();
-    const company = String(body?.company || 'Not provided').trim();
-    const budget = String(body?.budget || '').trim();
-    const timeline = String(body?.timeline || '').trim();
-    const project = String(body?.project || '').trim();
+    console.log('Extracted values:', { name, email, phone, company, budget, timeline, project });
     
     console.log('Parsed form data:', { name, email, phone, company, budget, timeline, project });
     
