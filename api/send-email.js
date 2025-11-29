@@ -105,6 +105,7 @@ Submitted: ${new Date().toLocaleString()}`;
       formspreeData.append('_to', 'partners.clearhub@gmail.com');
       formspreeData.append('_subject', `New BusinessHub Lead - ${name}`);
 
+      console.log('Sending Formspree request...');
       const response = await fetch('https://formspree.io/f/xrbvnnjy', {
         method: 'POST',
         headers: {
@@ -147,9 +148,13 @@ Submitted: ${new Date().toLocaleString()}`;
       
       const params = new URLSearchParams();
       Object.keys(web3formsData).forEach(key => {
-        params.append(key, web3formsData[key]);
+        const value = web3formsData[key];
+        if (value !== undefined && value !== null) {
+          params.append(key, String(value));
+        }
       });
       
+      console.log('Sending Web3Forms request...');
       const response = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: {
